@@ -18,7 +18,16 @@ int main() {
   FloodFill fill;
 
   canvas.flushCanvas();
+
+  // Add frame limiting
+  const int FPS = 60;
+  const int FRAME_DELAY = 1000 / FPS;
+
+  Uint32 frameStart;
+  int frameTime;
+
   while (canvas.isRunning) {
+    frameStart = SDL_GetTicks();
     SDL_GetMouseState(&tool.mouseX, &tool.mouseY);
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -54,7 +63,12 @@ int main() {
       brush.draw();
     }
     SDL_RenderPresent(canvas.renderer);
-    SDL_Delay(3);
+    
+    // Your existing event handling and drawing code here   
+    frameTime = SDL_GetTicks() - frameStart;
+    if (FRAME_DELAY > frameTime) {
+        SDL_Delay(FRAME_DELAY - frameTime);
+    }
   }
 
   return 0;
