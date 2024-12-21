@@ -25,11 +25,12 @@ int main() {
 
   Uint32 frameStart;
   int frameTime;
-
+  SDL_Event event;
+  
   while (canvas.isRunning) {
     frameStart = SDL_GetTicks();
     SDL_GetMouseState(&tool.mouseX, &tool.mouseY);
-    SDL_Event event;
+
     while (SDL_PollEvent(&event)) {
       if (event.type == SDL_QUIT) {
         canvas.isRunning = false;
