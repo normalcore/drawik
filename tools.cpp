@@ -1,9 +1,5 @@
 #include "tools.hh"
 #include "canvas.hh"
-#include <cmath>
-#include <cstdlib>
-#include <thread>
-#include <vector>
 
 Tool::Tool()
     : red(0), green(0), blue(0), alpha(0), radius(0), isActive(false),
@@ -172,13 +168,15 @@ void FloodFill::randomFill(int startX, int startY) {
 
   SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
 
+  int x,y;
+
   while (!pixelQueue.empty()) {
-    auto [x, y] = pixelQueue.front();
+    x = pixelQueue.front().first;
+    y = pixelQueue.front().second;
     pixelQueue.pop();
 
     if (!canFill(x, y))
       continue;
-
     putPixel(x, y, rand(), rand(), rand(), 255);
 
     pixelQueue.push({x + 1, y});

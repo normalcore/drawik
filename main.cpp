@@ -12,7 +12,7 @@ int main() {
   tool.renderer = canvas.renderer;
   tool.canvas = &canvas;
 
-  Paintbrush brush(std::thread::hardware_concurrency());
+  Paintbrush brush;
   brush.radius = 7;
 
   FloodFill fill;

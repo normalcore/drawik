@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 project(kesha)
 
 set(CMAKE_CXX_STANDARD 17)
-SET(GCC_COMPILE_FLAGS "-flto")
+SET(GCC_COMPILE_FLAGS "-flto -fopenmp -lpthread -O3")
 
 # Set up the module path to find SDL2
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")

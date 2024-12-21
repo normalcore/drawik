@@ -9,7 +9,7 @@
 #include <mutex>
 #include <queue>
 #include <string>
-#include <thread>
+
 
 class Tool {
 public:
@@ -17,8 +17,6 @@ public:
 
   static int mouseX;
   static int mouseY;
-
-  std::vector<std::thread> toolWorkers;
 
   static int prevMouseX;
   static int prevMouseY;
@@ -42,7 +40,7 @@ public:
 
 class Paintbrush : public Tool {
 public:
-  Paintbrush(size_t threadCount) {}
+  Paintbrush() {}
   void draw();
   void circleDrawingAlgorithm(int xc, int yc, int circRadius);
 };
